@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+     <link rel="stylesheet" href="Frontend/dashboard.css">
+</head>
+<body>
+<div class="stats">
+
+    <div class="card">
+        <h2 id="totalCount">0</h2>
+        <p>Total Volunteers</p>
+    </div>
+
+    <div class="card approved">
+        <h2 id="approvedCount">0</h2>
+        <p>Approved</p>
+    </div>
+
+    <div class="card pending">
+        <h2 id="pendingCount">0</h2>
+        <p>Pending</p>
+    </div>
+
+</div>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search Volunteer..."
+onkeyup="searchVolunteer()"
+/>
+
+<br><br>
+<div class="container">
+
+    <h1>Volunteer Dashboard</h1>
+
+    <table border="1" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>College</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="volunteerTable">
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
