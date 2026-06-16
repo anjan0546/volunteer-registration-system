@@ -1,19 +1,19 @@
 const table = document.getElementById("volunteerTable");
 
+const API_URL =
+"https://volunteer-registration-system-a3h1.onrender.com/api/volunteers";
+
 async function loadVolunteers() {
 
     try {
 
-        const response = await fetch(
-            "http://localhost:5000/api/volunteers"
-        );
+        const response = await fetch(API_URL);
 
         const volunteers = await response.json();
 
         table.innerHTML = "";
 
         // Dashboard Statistics
-
         document.getElementById("totalCount").innerText =
             volunteers.length;
 
@@ -30,19 +30,12 @@ async function loadVolunteers() {
         volunteers.forEach(volunteer => {
 
             table.innerHTML += `
-            
             <tr>
-
                 <td>${volunteer.name}</td>
-
                 <td>${volunteer.email}</td>
-
                 <td>${volunteer.college}</td>
-
                 <td>${volunteer.status}</td>
-
                 <td>
-
                     <button onclick="approveVolunteer('${volunteer._id}')">
                         Approve
                     </button>
@@ -50,17 +43,14 @@ async function loadVolunteers() {
                     <button onclick="deleteVolunteer('${volunteer._id}')">
                         Delete
                     </button>
-
                 </td>
-
             </tr>
-
             `;
         });
 
     } catch (error) {
 
-        console.log(error);
+        console.error("Error loading volunteers:", error);
 
     }
 }
@@ -70,7 +60,7 @@ async function approveVolunteer(id) {
     try {
 
         await fetch(
-            `http://localhost:5000/api/volunteers/approve/${id}`,
+            `${API_URL}/approve/${id}`,
             {
                 method: "PUT"
             }
@@ -80,7 +70,7 @@ async function approveVolunteer(id) {
 
     } catch (error) {
 
-        console.log(error);
+        console.error("Error approving volunteer:", error);
 
     }
 }
@@ -95,7 +85,7 @@ async function deleteVolunteer(id) {
     try {
 
         await fetch(
-            `http://localhost:5000/api/volunteers/${id}`,
+            `${API_URL}/${id}`,
             {
                 method: "DELETE"
             }
@@ -105,7 +95,7 @@ async function deleteVolunteer(id) {
 
     } catch (error) {
 
-        console.log(error);
+        console.error("Error deleting volunteer:", error);
 
     }
 }
@@ -129,7 +119,6 @@ function searchVolunteer() {
             text.includes(input)
                 ? ""
                 : "none";
-
     });
 }
 

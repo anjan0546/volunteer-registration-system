@@ -14,7 +14,7 @@ form.addEventListener("submit", async (e) => {
     };
 
     const response = await fetch(
-        "http://localhost:5000/api/volunteers/register",
+        "https://volunteer-registration-system-a3h1.onrender.com/api/volunteers/register",
         {
             method: "POST",
             headers: {
@@ -26,6 +26,7 @@ form.addEventListener("submit", async (e) => {
 
     const data = await response.json();
 
-    document.getElementById("message").innerHTML =
-        data.message;
+    document.getElementById("message").innerHTML = data.message;
+
+    form.reset();
 });
